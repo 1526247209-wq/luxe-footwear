@@ -58,6 +58,9 @@
   .rel-img img{width:100%;height:100%;object-fit:cover}
   .rel-name{font-family:'Cormorant Garamond',serif;font-size:18px}
   .rel-price{font-size:13px;color:var(--gold);margin-top:4px}
+  .thumbs{display:flex;gap:8px;flex-wrap:wrap}
+  .thumbs img{width:70px;height:70px;object-fit:cover;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+  .thumbs img:hover,.thumbs img.active{border-color:var(--gold)}
 
   @media(max-width:820px){
     .product-wrap{grid-template-columns:1fr;gap:30px}
@@ -82,7 +85,10 @@
 </div>
 
 <div class="product-wrap">
-  <div class="product-img"><img id="main-img" src="" alt=""></div>
+  <div>
+    <div class="product-img" style="margin-bottom:12px"><img id="main-img" src="" alt=""></div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
   <div class="product-info">
     <span class="cat" id="p-cat"></span>
     <h1 id="p-name"></h1>
@@ -91,12 +97,13 @@
     <div class="specs">
       <div class="spec-row"><span class="label">Category</span><span id="p-cat2"></span></div>
       <div class="spec-row"><span class="label">US Sizes</span><span>US 5 – 13</span></div>
-      <div class="spec-row"><span class="label">MOQ</span><span>50 pairs per colorway</span></div>
-      <div class="spec-row"><span class="label">Lead Time</span><span>30 days for samples</span></div>
+      <div class="spec-row"><span class="label">MOQ</span><span>1 pair</span></div>
+      <div class="spec-row"><span class="label">Lead Time</span><span>7 days</span></div>
       <div class="spec-row"><span class="label">Shipping</span><span>FOB Guangzhou / Shenzhen</span></div>
     </div>
     <a class="btn" id="inquire-btn" href="index.html#contact">Inquire About This Product</a>
     <a class="btn btn-outline" href="index.html#collections">Back to Collection</a>
+    <a class="btn" style="background:#25D366;margin-top:10px" href="https://wa.me/8618621753637" target="_blank">Chat on WhatsApp</a>
   </div>
 </div>
 
@@ -107,22 +114,18 @@
 
 <script>
 const products = [
-  {id:1, name:"The Court White", cat:"Leather", price:"USD 50", img:"shoe1.jpg",
-   desc:"Minimalist low-top court sneaker in premium smooth leather. Clean silhouette, cushioned footbed, and a durable rubber outsole. A timeless everyday staple designed for the US market."},
-  {id:2, name:"Executive Black", cat:"Leather", price:"USD 52", img:"shoe2.jpg",
-   desc:"Sleek black leather sneaker with a refined profile. Pairs well with both business casual and weekend looks. Full-grain upper with a breathable lining."},
-  {id:3, name:"Mocha Low", cat:"Suede", price:"USD 55", img:"shoe3.jpg",
-   desc:"Soft suede low-top in warm mocha tone. Premium Portuguese suede upper, memory foam insole, and a lightweight cupsole."},
-  {id:4, name:"Taupe Runner", cat:"Suede", price:"USD 55", img:"shoe4.jpg",
-   desc:"Taupe suede runner with retro-inspired lines. Mixed material upper, EVA midsole for all-day comfort, and a textured rubber outsole."},
-  {id:5, name:"Ecru Deck", cat:"Canvas", price:"USD 50", img:"shoe5.jpg",
-   desc:"Heavyweight Japanese canvas deck shoe in natural ecru. Vulcanized sole, cotton laces, and a breathable unlined upper — perfect for warm climates."},
-  {id:6, name:"Ink Striped", cat:"Canvas", price:"USD 50", img:"shoe6.jpg",
-   desc:"Ink-blue canvas sneaker with subtle stripe detail. Clean, casual, and versatile. Cotton canvas upper with a natural rubber foxing."},
-  {id:7, name:"980 Vintage", cat:"Retro Runner", price:"USD 55", img:"shoe7.jpg",
-   desc:"Inspired by late-90s running silhouettes. Layered mesh and suede upper, ABZORB-style cushioning, and a sculpted waffle outsole."},
-  {id:8, name:"Gravel Trail", cat:"Retro Runner", price:"USD 55", img:"shoe8.jpg",
-   desc:"Trail-inspired runner with rugged outsole lugs. Breathable mesh upper, supportive heel counter, and a reactive EVA midsole."}
+  {id:1, name:"Brown Leather Loafer", cat:"Leather", price:"USD 55",
+   images:["shoe1.jpg","shoe1-2.jpg","shoe1-3.jpg","shoe1-4.jpg"],
+   desc:"Classic leather loafer in rich brown. Full-grain leather upper, cushioned insole, and a durable outsole. Versatile enough for the office or a casual weekend. A wardrobe staple for boutiques and resellers."},
+  {id:2, name:"White Court Sneaker", cat:"Leather", price:"USD 52",
+   images:["shoe2.jpg","shoe2-2.jpg","shoe2-3.jpg","shoe2-4.jpg"],
+   desc:"Clean white leather court sneaker. Minimalist silhouette, premium leather upper, and a comfortable padded collar. Pairs effortlessly with jeans, chinos, or shorts. A bestseller for US retailers."},
+  {id:3, name:"Beige Canvas Loafer", cat:"Canvas", price:"USD 50",
+   images:["shoe3.jpg","shoe3-2.jpg","shoe3-3.jpg","shoe3-4.jpg"],
+   desc:"Lightweight canvas loafer in soft beige. Breathable upper, flexible sole, and a slip-on design for everyday ease. Perfect for spring and summer retail."},
+  {id:4, name:"Black Leather Oxford", cat:"Leather", price:"USD 55",
+   images:["shoe4.jpg","shoe4-2.jpg","shoe4-3.jpg","shoe4-4.jpg"],
+   desc:"Polished black leather oxford. Lace-up closure, leather lining, and a smart profile. Ideal for formal wear, business casual, and premium boutiques."}
 ];
 
 const params = new URLSearchParams(window.location.search);
@@ -131,7 +134,7 @@ const p = products.find(x => x.id === id) || products[0];
 
 document.title = "Maison Luxe — " + p.name;
 document.getElementById('bc-name').textContent = p.name;
-document.getElementById('main-img').src = p.img;
+document.getElementById('main-img').src = p.images[0];
 document.getElementById('main-img').alt = p.name;
 document.getElementById('p-cat').textContent = p.cat;
 document.getElementById('p-cat2').textContent = p.cat;
@@ -139,16 +142,27 @@ document.getElementById('p-name').textContent = p.name;
 document.getElementById('p-price').textContent = p.price;
 document.getElementById('p-desc').textContent = p.desc;
 
+// Build thumbnail gallery
+const thumbsEl = document.getElementById('thumbs');
+p.images.forEach((img, i) => {
+  thumbsEl.innerHTML += `<img src="${img}" alt="${p.name} view ${i+1}" class="${i===0?'active':''}" onclick="changeImg('${img}', this)">`;
+});
+function changeImg(src, el) {
+  document.getElementById('main-img').src = src;
+  document.querySelectorAll('.thumbs img').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
 // Pre-fill inquiry form with product name
 document.getElementById('inquire-btn').href = "index.html?product=" + encodeURIComponent(p.name) + "#contact";
 
-// Related products (other 4)
-const related = products.filter(x => x.id !== id).slice(0, 4);
+// Related products
+const related = products.filter(x => x.id !== id);
 const grid = document.getElementById('related-grid');
 related.forEach(r => {
   grid.innerHTML += `
     <a class="rel-card" href="product.html?id=${r.id}">
-      <div class="rel-img"><img src="${r.img}" alt="${r.name}"></div>
+      <div class="rel-img"><img src="${r.images[0]}" alt="${r.name}"></div>
       <div class="rel-name">${r.name}</div>
       <div class="rel-price">${r.price}</div>
     </a>`;

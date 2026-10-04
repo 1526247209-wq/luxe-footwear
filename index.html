@@ -150,6 +150,10 @@
     .nav-links.open{display:flex}
     .nav-toggle{display:block}
   }
+
+  .wa-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,211,102,.4);z-index:999;transition:transform .2s}
+  .wa-float:hover{transform:scale(1.1)}
+  .wa-float svg{width:32px;height:32px;fill:#fff}
 </style>
 </head>
 <body>
@@ -168,10 +172,13 @@
 <!-- HERO -->
 <header class="hero" id="home">
   <div>
-    <span class="eyebrow" style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px">Est. 2018 · Footwear Atelier</span>
-    <h1>Quiet Luxury,<br>Worn <em>Everyday.</em></h1>
-    <p>Minimalist casual sneakers crafted from Italian full-grain leather, Portuguese suede and heavyweight Japanese canvas. Built for the US market — wholesale & retail.</p>
-    <a href="#collections" class="btn btn-solid">Explore Collection</a>
+    <span class="eyebrow" style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px">Premium Sneakers · Wholesale &amp; Retail</span>
+    <h1>Premium Sneakers.<br>Honest <em>Prices.</em></h1>
+    <p>Hand-picked casual sneakers for boutiques, retailers and resellers across the United States. From $50 per pair. MOQ just 1 pair. Ships in 7 days.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#collections" class="btn btn-solid">Shop Collection</a>
+      <a href="https://wa.me/8618621753637" target="_blank" class="btn btn-outline" style="border-color:var(--ink);color:var(--ink);text-decoration:none">Chat on WhatsApp</a>
+    </div>
   </div>
   <div class="hero-img"></div>
 </header>
@@ -186,60 +193,32 @@
   <div class="cats">
     <button class="cat active" data-cat="all">All</button>
     <button class="cat" data-cat="leather">Leather</button>
-    <button class="cat" data-cat="suede">Suede</button>
     <button class="cat" data-cat="canvas">Canvas</button>
-    <button class="cat" data-cat="run">Retro Runner</button>
   </div>
 
   <div class="grid" id="grid">
-    <!-- PRODUCT CARDS: replace .card-img background with your own product photos
-         e.g. <img src="images/01.jpg" style="width:100%;height:100%;object-fit:cover"> -->
     <a class="card" data-cat="leather" href="product.html?id=1">
-      <div class="card-img"><img src="shoe1.jpg" alt="The Court White"><span class="card-tag">Bestseller</span></div>
+      <div class="card-img"><img src="shoe1.jpg" alt="Brown Leather Loafer"><span class="card-tag">Bestseller</span></div>
       <div class="card-cat">Leather</div>
-      <div class="card-name">The Court White</div>
-      <div class="card-price">USD 50</div>
+      <div class="card-name">Brown Leather Loafer</div>
+      <div class="card-price">USD 55</div>
     </a>
     <a class="card" data-cat="leather" href="product.html?id=2">
-      <div class="card-img"><img src="shoe2.jpg" alt="Executive Black"></div>
+      <div class="card-img"><img src="shoe2.jpg" alt="White Court Sneaker"><span class="card-tag">Popular</span></div>
       <div class="card-cat">Leather</div>
-      <div class="card-name">Executive Black</div>
+      <div class="card-name">White Court Sneaker</div>
       <div class="card-price">USD 52</div>
     </a>
-    <a class="card" data-cat="suede" href="product.html?id=3">
-      <div class="card-img"><img src="shoe3.jpg" alt="Mocha Low"></div>
-      <div class="card-cat">Suede</div>
-      <div class="card-name">Mocha Low</div>
-      <div class="card-price">USD 55</div>
-    </a>
-    <a class="card" data-cat="suede" href="product.html?id=4">
-      <div class="card-img"><img src="shoe4.jpg" alt="Taupe Runner"><span class="card-tag">New</span></div>
-      <div class="card-cat">Suede</div>
-      <div class="card-name">Taupe Runner</div>
-      <div class="card-price">USD 55</div>
-    </a>
-    <a class="card" data-cat="canvas" href="product.html?id=5">
-      <div class="card-img"><img src="shoe5.jpg" alt="Ecru Deck"></div>
+    <a class="card" data-cat="canvas" href="product.html?id=3">
+      <div class="card-img"><img src="shoe3.jpg" alt="Beige Canvas Loafer"></div>
       <div class="card-cat">Canvas</div>
-      <div class="card-name">Ecru Deck</div>
+      <div class="card-name">Beige Canvas Loafer</div>
       <div class="card-price">USD 50</div>
     </a>
-    <a class="card" data-cat="canvas" href="product.html?id=6">
-      <div class="card-img"><img src="shoe6.jpg" alt="Ink Striped"></div>
-      <div class="card-cat">Canvas</div>
-      <div class="card-name">Ink Striped</div>
-      <div class="card-price">USD 50</div>
-    </a>
-    <a class="card" data-cat="run" href="product.html?id=7">
-      <div class="card-img"><img src="shoe7.jpg" alt="980 Vintage"><span class="card-tag">Bestseller</span></div>
-      <div class="card-cat">Retro Runner</div>
-      <div class="card-name">980 Vintage</div>
-      <div class="card-price">USD 55</div>
-    </a>
-    <a class="card" data-cat="run" href="product.html?id=8">
-      <div class="card-img"><img src="shoe8.jpg" alt="Gravel Trail"></div>
-      <div class="card-cat">Retro Runner</div>
-      <div class="card-name">Gravel Trail</div>
+    <a class="card" data-cat="leather" href="product.html?id=4">
+      <div class="card-img"><img src="shoe4.jpg" alt="Black Leather Oxford"></div>
+      <div class="card-cat">Leather</div>
+      <div class="card-name">Black Leather Oxford</div>
       <div class="card-price">USD 55</div>
     </a>
   </div>
@@ -248,14 +227,14 @@
 <!-- VALUES -->
 <section class="values">
   <div class="sec-head">
-    <span class="eyebrow">Why Maison Luxe</span>
-    <h2>Built on Craft</h2>
+    <span class="eyebrow">Why Buy From Us</span>
+    <h2>Built for Your Business</h2>
   </div>
   <div class="values-grid">
-    <div><span class="v-num">12K+</span><div class="v-title">Pairs Shipped</div><div class="v-desc">To boutique &amp; retail partners across the US.</div></div>
-    <div><span class="v-num">18mo</span><div class="v-title">Warranty</div><div class="v-desc">On construction, stitching and leather integrity.</div></div>
-    <div><span class="v-num">US 5–13</span><div class="v-title">Size Run</div><div class="v-desc">Full men's &amp; women's US sizing on every style.</div></div>
-    <div><span class="v-num">30d</span><div class="v-title">Sample Lead</div><div class="v-desc">Private label &amp; OEM sample turnaround.</div></div>
+    <div><span class="v-num">1 Pair</span><div class="v-title">Low MOQ</div><div class="v-desc">Start with a single pair. No minimum order pressure.</div></div>
+    <div><span class="v-num">7 Days</span><div class="v-title">Fast Shipping</div><div class="v-desc">From order to your door — fast and reliable.</div></div>
+    <div><span class="v-num">$50–$55</span><div class="v-title">Wholesale Pricing</div><div class="v-desc">Transparent pricing. Great margin for your store.</div></div>
+    <div><span class="v-num">US 5–13</span><div class="v-title">Full Size Range</div><div class="v-desc">Complete men's sizing on every style you order.</div></div>
   </div>
 </section>
 
@@ -264,10 +243,10 @@
   <div class="about">
     <div class="about-img"></div>
     <div>
-      <span class="eyebrow" style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px">Our Story</span>
-      <h2>An Atelier Obsessed With The Details.</h2>
-      <p>Maison Luxe was founded on a simple belief: everyday sneakers should feel as considered as a tailored garment. We work with tanneries in Italy and Portugal, and finish each pair by hand in our own factory.</p>
-      <p>We supply independent boutiques, curated online retailers and hospitality groups across the United States. Private label, custom colorways and low MOQ wholesale are available on request.</p>
+      <span class="eyebrow" style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px">Who We Are</span>
+      <h2>Quality Sneakers. No Middleman Markup.</h2>
+      <p>We source directly from the factory floor and ship straight to you. Every pair is checked for quality before it leaves our warehouse. No hidden costs, no inflated prices — just premium sneakers at fair wholesale rates.</p>
+      <p>We work with independent boutiques, online retailers and resellers across the United States. Whether you need 1 pair or 100, we've got you covered. Questions? Message us on WhatsApp — we reply fast.</p>
     </div>
   </div>
 </section>
@@ -275,8 +254,8 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="sec-head">
-    <span class="eyebrow">Wholesale &amp; Retail</span>
-    <h2>Send an Inquiry</h2>
+    <span class="eyebrow">Get In Touch</span>
+    <h2>Request Our Full Catalog</h2>
   </div>
   <form class="contact-wrap" action="https://formspree.io/f/mbglnlvz" method="POST">
     <div class="field">
@@ -288,30 +267,35 @@
       <input type="email" name="email" required>
     </div>
     <div class="field">
-      <label>Company / Boutique (optional)</label>
+      <label>Company / Store (optional)</label>
       <input type="text" name="company">
     </div>
     <div class="field">
-      <label>Interested Style</label>
+      <label>What are you looking for?</label>
       <select name="style">
-        <option>Leather Collection</option>
-        <option>Suede Collection</option>
-        <option>Canvas Collection</option>
-        <option>Retro Runner</option>
-        <option>Full Catalog</option>
+        <option>Full catalog</option>
+        <option>Leather sneakers</option>
+        <option>Suede sneakers</option>
+        <option>Canvas sneakers</option>
+        <option>Retro runners</option>
       </select>
     </div>
     <div class="field">
-      <label>Message — quantities, sizes, destination</label>
+      <label>Message — quantities, sizes, anything else</label>
       <textarea name="message" required></textarea>
     </div>
     <button type="submit" class="btn btn-solid" style="width:100%">Send Inquiry</button>
   </form>
   <div class="contact-info">
-    Wholesale inquiries · New York / Los Angeles showroom by appointment<br>
-    Reply within 24 hours (Mon–Fri EST)
+    Prefer instant chat? Message us on WhatsApp — we reply within hours<br>
+    Email inquiries answered within 24 hours (Mon–Fri EST)
   </div>
 </section>
+
+<!-- WhatsApp Float Button -->
+<a class="wa-float" href="https://wa.me/8618621753637" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.6.8 5 2.2 7L4 28l6.2-2.1c1.9 1 4 1.6 6.3 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1.2 1.2-3.6-.2-.4C6.4 18.8 6 16.9 6 15 6 9.9 10.1 5.8 15.2 5.8s9.2 4.1 9.2 9.2-4.1 9.2-9.2 9.2zm5.1-12.6c-.3-.1-1.8-.9-2.1-1-.6-.1-1-.1-1.4.3-.1.3-.5.6-.8.9-.2.2-.6.3-.8.1-.3-.1-1.1-.4-2.1-1.3-.8-.8-1.3-1.8-1.5-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.3-.4.5-.7.1-.3 0-.5 0-.7l-1-2.4c-.2-.6-.5-.5-.7-.5h-1.1c-.3 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.4 3.3c.2.2 2.3 3.5 5.5 4.8.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4 0-.2-.2-.3-.5-.4z"/></svg>
+</a>
 
 <footer>
   <span class="brand">Maison<span style="color:var(--gold)">·</span>Luxe</span>
